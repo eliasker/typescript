@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/eliasker/typescript/issues"
   },
-  "homepage": "https://github.com/eliasker/typescript#readme"
+  "homepage": "https://github.com/eliasker/typescript#readme",
+  "dependencies": {
+    "@types/node": "^14.11.2"
+  }
 }
