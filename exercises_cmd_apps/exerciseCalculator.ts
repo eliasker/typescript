@@ -1,4 +1,4 @@
-interface Result {
+export interface Result {
   periodLength: number;
   trainingDays: number,
   target: number,
@@ -34,7 +34,7 @@ const parseExerciseArguments = (args: Array<string>): ExerciseValues => {
  * @param target Target amount of daily hours
  * @returns Result object that describes performance based on target and done
  */
-const calculateExercise = (trainingPerDay: Array<number>, target: number): Result => {
+export const calculateExercise = (trainingPerDay: Array<number>, target: number): Result => {
   const totalTraining = trainingPerDay.reduce((a, b) => a + b, 0);
   const averageTrainingPerDay = totalTraining / trainingPerDay.length;
   let givenRating = 0;
