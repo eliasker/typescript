@@ -13,8 +13,14 @@ export interface Patient {
   occupation: string
 }
 
-// Serveri hoitaa id -kentän
+export enum Gender {
+  Male = 'male',
+  Female = 'female',
+  Other = 'other'
+}
+
+// id -kenttä serveriltä
 export type NewPatient = Omit<Patient, 'id'>;
 
-// Tyyppi on siis Patient, poislukien ssn -kenttä
+// Patient poislukien ssn -kenttä
 export type PatientNoSSN = Omit<Patient, 'ssn'>;
