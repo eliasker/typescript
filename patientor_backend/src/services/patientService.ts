@@ -1,17 +1,20 @@
 import patientsData from '../data/patients.json';
-import { NewPatient, Patient, PatientNoSSN } from '../types';
+import { NewPatient, Patient, PublicPatient } from '../types';
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const patients: Patient[] = patientsData;
 
 const getPatients = (): Patient[] => {
   return patients;
 };
 
-const getPatientsOmitSSN = (): PatientNoSSN[] => {
-  return patients.map(({ id, name, dateOfBirth, gender, occupation }) => ({
-    id, name, dateOfBirth, gender, occupation
+const getPublicPatients = (): PublicPatient[] => {
+  return patients.map(({ id, name, dateOfBirth, gender, occupation, entries }) => ({
+    id, name, dateOfBirth, gender, occupation, entries
   }));
+};
+
+const getPatientById = (targetId: string): Patient | undefined => {
+  return patients.find(p => p.id === targetId);
 };
 
 const addPatient = (patient: NewPatient): Patient => {
@@ -26,5 +29,6 @@ const addPatient = (patient: NewPatient): Patient => {
 export default {
   addPatient,
   getPatients,
-  getPatientsOmitSSN,
+  getPatientById,
+  getPublicPatients,
 };
