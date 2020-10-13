@@ -36,6 +36,19 @@ const PatientListPage: React.FC = () => {
     }
   };
 
+  const handleClickPatient = async (id: string) => {
+    console.log('click, patient id: ', id);
+
+    try {
+      const responsePatient = await axios.get(`${apiBaseUrl}/patients/${id}`);
+      console.log('got as response: ', responsePatient.data);
+
+    } catch (e) {
+      console.error(e.response.data);
+      setError(e.response.data.error);
+    }
+  };
+
   return (
     <div className="App">
       <Container textAlign="center">
@@ -52,7 +65,7 @@ const PatientListPage: React.FC = () => {
         </Table.Header>
         <Table.Body>
           {Object.values(patients).map((patient: Patient) => (
-            <Table.Row key={patient.id}>
+            <Table.Row key={patient.id} onClick={() => handleClickPatient(patient.id)}>
               <Table.Cell>{patient.name}</Table.Cell>
               <Table.Cell>{patient.gender}</Table.Cell>
               <Table.Cell>{patient.occupation}</Table.Cell>
